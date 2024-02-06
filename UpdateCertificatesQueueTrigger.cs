@@ -31,6 +31,7 @@ namespace Company.Function
 
             var pfxContent = blobClient.OpenRead();
             log.LogInformation($"C# Queue trigger function - Got the file...");
+            log.LogInformation($"File Content... {pfxContent} ");
 
             // Convert the pfxContent stream to a byte array
             byte[] pfxBytes;
