@@ -35,6 +35,8 @@ namespace Company.Function
 
             // Retrieving the PFX file from the blob storage and transforming it into bytes
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+            log.LogInformation($"C# Queue trigger function - Connected to container...  {containerClient.Name}");
+
             var blobClient = containerClient.GetBlobClient(blobName);
             log.LogInformation($"C# Queue trigger function - Idenitified the pfx from the blob..." + blobClient.Name);
             byte[] pfxBytes = blobClient.DownloadContent().Value.Content.ToArray();
