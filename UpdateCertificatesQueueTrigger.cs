@@ -31,13 +31,14 @@ namespace Company.Function
 
             var pfxContent = blobClient.OpenRead();
             log.LogInformation($"C# Queue trigger function - Got the file...");
-            log.LogInformation($"File Content... {pfxContent} ");
+            log.LogInformation($"File Content... Primeiro byte {pfxContent.ReadByte()} ");
 
             // Convert the pfxContent stream to a byte array
             byte[] pfxBytes;
             using (var memoryStream = new MemoryStream())
             {
                 pfxContent.CopyTo(memoryStream);
+                log.LogInformation($"C# memoryStream: {memoryStream}");
                 pfxBytes = memoryStream.ToArray();
             }
             log.LogInformation($"C# Queue trigger function - File went to bytes...\n");
