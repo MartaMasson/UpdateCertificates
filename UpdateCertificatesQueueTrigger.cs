@@ -39,9 +39,10 @@ namespace Company.Function
 
             var blobClient = containerClient.GetBlobClient(blobName);
             log.LogInformation($"C# Queue trigger function - Idenitified the pfx from the blob..." + blobClient.Name);
+            log.LogInformation($"C# Queue trigger function - blob content..." + blobClient.DownloadContent().Value.Content.ToString());
             byte[] pfxBytes = blobClient.DownloadContent().Value.Content.ToArray();
             log.LogInformation($"C# Queue trigger function - File went to bytes...\n");
-            log.LogInformation($"The file in bytes: {pfxBytes}");
+            log.LogInformation($"The file in bytes: {pfxBytes.ToString()}");
 
             // Create a CertificateClient to connect and access the Key Vault
             var keyVaultUri = new Uri($"https://kv-vm-test-mmg.vault.azure.net/");
