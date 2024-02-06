@@ -22,9 +22,7 @@ namespace Company.Function
             string pfxPassword = "your-pfx-password"; // Replace with your PFX password
 
 
-            // Create a user-managed identity credential
-            var managedIdentityCredential = new ManagedIdentityCredential();
-            var blobServiceClient = new BlobServiceClient(new Uri($"https://mmgcerts.blob.core.windows.net"), managedIdentityCredential);
+            var blobServiceClient = new BlobServiceClient(new Uri($"https://mmgcerts.blob.core.windows.net"), new DefaultAzureCredential());
             log.LogInformation($"C# Queue trigger function - Authenticating on Blob Storage using managed identity...");
 
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
@@ -41,19 +39,7 @@ namespace Company.Function
                 pfxContent.CopyTo(memoryStream);
                 pfxBytes = memoryStream.ToArray();
             }
-
-            // Download the PFX file from the blob
-            /*var pfxBlob = await blobClient.DownloadAsync();
-
-            byte[] pfxBytes;
-            using (var memoryStream = new MemoryStream())
-            {
-                await pfxBlob.Value.Content.CopyToAsync(memoryStream);
-                pfxBytes = memoryStream.ToArray();
-            }
-            log.LogInformation($"C# Queue trigger function - Transformed the blob in to bytes...");
-            */
-
+            log.LogInformation($"C# Queue trigger function - File went to pfxBytes...");
 
             // Create a CertificateClient to access the Key Vault
             var keyVaultUri = new Uri($"https://kv-vm-test-mmg.vault.azure.net/");
