@@ -39,7 +39,8 @@ namespace Company.Function
                 pfxContent.CopyTo(memoryStream);
                 pfxBytes = memoryStream.ToArray();
             }
-            log.LogInformation($"C# Queue trigger function - File went to pfxBytes...");
+            log.LogInformation($"C# Queue trigger function - File went to bytes...\n");
+            log.LogInformation($"The file in bytes: {pfxBytes}");
 
             // Create a CertificateClient to access the Key Vault
             var keyVaultUri = new Uri($"https://kv-vm-test-mmg.vault.azure.net/");
