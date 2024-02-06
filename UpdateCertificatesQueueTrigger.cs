@@ -19,7 +19,7 @@ namespace Company.Function
 
             string containerName = "selfsignedfiles"; // Replace with your container name
             string blobName = "mypfx.pfx"; // Replace with your blob name
-            string pfxPassword = "your-pfx-password"; // Replace with your PFX password
+            string pfxPassword = "@Teste123456"; // Replace with your PFX password
 
 
             var blobServiceClient = new BlobServiceClient(new Uri($"https://mmgcerts.blob.core.windows.net"), new DefaultAzureCredential());
@@ -29,18 +29,20 @@ namespace Company.Function
             var blobClient = containerClient.GetBlobClient(blobName);
             log.LogInformation($"C# Queue trigger function - Idenitified the pfx from the blob..." + blobClient.Name);
 
-            var pfxContent = blobClient.OpenRead();
-            log.LogInformation($"C# Queue trigger function - Got the file...");
-            log.LogInformation($"File Content... Primeiro byte {pfxContent.ReadByte()} ");
+            byte[] pfxBytes = blobClient.DownloadContent().Value.Content.ToArray();
+
+            //var pfxContent = blobClient.OpenRead();
+            //log.LogInformation($"C# Queue trigger function - Got the file...");
+            //log.LogInformation($"File Content... Primeiro byte {pfxContent.ReadByte()} ");
 
             // Convert the pfxContent stream to a byte array
-            byte[] pfxBytes;
+            /*byte[] pfxBytes;
             using (var memoryStream = new MemoryStream())
             {
                 pfxContent.CopyTo(memoryStream);
                 log.LogInformation($"C# memoryStream: {memoryStream}");
                 pfxBytes = memoryStream.ToArray();
-            }
+            }*/
             log.LogInformation($"C# Queue trigger function - File went to bytes...\n");
             log.LogInformation($"The file in bytes: {pfxBytes}");
 
