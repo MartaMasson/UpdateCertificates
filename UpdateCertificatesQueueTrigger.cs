@@ -33,6 +33,8 @@ namespace Company.Function
 
             // Download the PFX file from the blob
             var pfxBlob = await blobClient.DownloadAsync();
+            log.LogInformation($"C# Queue trigger function - pfx from the blob was downloaded...");
+
             byte[] pfxBytes;
             using (var memoryStream = new MemoryStream())
             {
