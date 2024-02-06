@@ -55,6 +55,11 @@ namespace Company.Function
             await certificateClient.ImportCertificateAsync(importOptions);
 
             log.LogInformation($"C# Queue trigger function - Imported into key vault...");
+
+            //Deleting pfx file from blobstorage
+            containerClient.DeleteBlob(blobName);
+            log.LogInformation($"C# Queue trigger function - Deleted pfx file from the storage...");
+
         }
     }
 
