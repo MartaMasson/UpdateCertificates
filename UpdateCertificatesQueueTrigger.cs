@@ -22,6 +22,8 @@ namespace Company.Function
             string pfxPassword = "your-pfx-password"; // Replace with your PFX password
 
             var blobServiceClient = new BlobServiceClient(new Uri($"https://mmgcerts.blob.core.windows.net"), new DefaultAzureCredential());
+            log.LogInformation($"C# Queue trigger function - Authenticating on Blob Storage using default credential...");
+
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
             var blobClient = containerClient.GetBlobClient(blobName);
 
