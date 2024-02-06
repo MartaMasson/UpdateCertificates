@@ -63,7 +63,7 @@ namespace Company.Function
             log.LogInformation($"C# Queue trigger function - Connected into key vault...");
 
             // Import the PFX file into the Key Vault as a certificate
-            string certificateName = "mypfx.pfx"; // Replace with your certificate name
+            string certificateName = "mypfx"; // Replace with your certificate name
 
             var importOptions = new ImportCertificateOptions(certificateName, pfxBytes)
             {
