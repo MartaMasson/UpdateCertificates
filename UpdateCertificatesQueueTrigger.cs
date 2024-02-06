@@ -4,7 +4,6 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Azure.Storage.Blobs;
 using Azure.Security.KeyVault.Certificates;
-using Azure.Security.KeyVault.Certificates.Models;
 using Azure.Identity;
 using System.IO;
 using System.Threading.Tasks;
