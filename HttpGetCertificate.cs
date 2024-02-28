@@ -33,7 +33,7 @@ namespace Company.Function
             log.LogInformation("Key-vault conectado.");
 
             // Retrieve the certificate by thumbprint
-            KeyVaultCertificate certificate = await client.GetCertificateAsync(thumbprint);
+            KeyVaultCertificate certificate = client.GetCertificate(thumbprint);
             log.LogInformation("Executei o get por thumbprint.");
 
             // Extract the certificate value (e.g., for use in your application)
