@@ -25,13 +25,16 @@ namespace Company.Function
 
             string keyVaultName = "kv-vm-test-mmg";
             string thumbprint = "D74478FE610D7DCA3EBD2F232C6B8A6CF6FA5769";
+            log.LogInformation("Variáveis setadas.");
 
             // Create an insta nce of the CertificateClient using Azure Identity
             var credential = new DefaultAzureCredential();
             var client = new CertificateClient(new Uri($"https://{keyVaultName}.vault.azure.net/"), credential);
+            log.LogInformation("Key-vault conectado.");
 
             // Retrieve the certificate by thumbprint
             KeyVaultCertificate certificate = await client.GetCertificateAsync(thumbprint);
+            log.LogInformation("Executei o get por thumbprint.");
 
             // Extract the certificate value (e.g., for use in your application)
             X509Certificate2 x509Certificate = new X509Certificate2(certificate.Cer);
