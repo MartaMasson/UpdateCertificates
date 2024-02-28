@@ -24,7 +24,7 @@ namespace Company.Function
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             string keyVaultName = "kv-vm-test-mmg";
-            string thumbprint = "D74478FE610D7DCA3EBD2F232C6B8A6CF6FA5769";
+            string thumbprint = "cert3";
             log.LogInformation("Variáveis setadas.");
 
             // Create an insta nce of the CertificateClient using Azure Identity
