@@ -37,6 +37,12 @@ namespace Company.Function
                         {
                             string fileContent = await reader.ReadToEndAsync();
                             log.LogInformation($"Contents of {fileUrl}:\n{fileContent}");
+
+                            char[] separators = { ' ' }; // Space character as the separator
+
+                            string[] words = fileContent.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                            log.LogInformation($"Contents of thumbprint:\n{words[0]}"); // thumbprint is the first word
                         }
                     }
                     else
