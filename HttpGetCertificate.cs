@@ -32,7 +32,7 @@ namespace Company.Function
             var client = new CertificateClient(new Uri($"https://{keyVaultName}.vault.azure.net/"), credential);
             log.LogInformation("Key-vault conectado.");
 
-            // Retrieve the certificate by thumbprint
+            // Retrieve the certificate by thumbprint (pelo thumbprint, não funciona, só pelo nome)
             KeyVaultCertificate certificate = client.GetCertificate(thumbprint);
             log.LogInformation("Executei o get por thumbprint.");
 
